@@ -1,0 +1,138 @@
+<div class="container mt-4 ">
+  <div class="customer shadow-lg p-3 mb-5 bg-white rounded ">
+      <div class="section-title text-center mb-3">
+          <h2 class="text-primary">إضافة اختبارات</h2>
+      </div>
+      <div  class=" customer p-3 rounded shadow-sm">
+        <div class="mb-3 row">
+          <div class="col-md-6">
+            <label for="testName" class="form-label">اسم الاختبار</label>
+            <input type="text" class="form-control" id="testName" [(ngModel)]="Name" placeholder="إضافة اختبار">
+          </div>
+          <div class="col-md-6">
+            <label for="testFile" class="form-label">اختر ملف</label>
+            <input *ngIf="showFileInput" type="file" #fileInput class="form-control" id="testFile" (change)="changIamge($event)">
+          </div>
+        
+        </div>
+      
+        <div class="mb-3">
+          <label for="testDescription" class="form-label">وصف الاختبار</label>
+          <textarea class="form-control" id="testDescription" rows="5" placeholder="إضافة وصف للاختبار" [(ngModel)]="Description"></textarea>
+        </div>
+      
+        <div class="text-end">
+          <button class="btn btn-primary" type="submit" (click)="AddTest()">
+            <i class="fas fa-plus me-2"></i>إضافة
+          </button>
+        </div>
+      </div>
+      
+  </div>
+
+  <div class="customer shadow-lg p-3 mb-5  rounded">
+      <div class="section-title text-center mb-3">
+          <h2 class="text-primary">عرض الاختبارات</h2>
+      </div>
+
+  <div class="d-flex justify-content-between mb-2">
+      <label for="entries">عرض :</label>
+      <div class="col-md-6">
+          <div class="input-group">
+              <input type="text" class="form-control rounded-pill px-4" placeholder="ابحث عن اختبار">
+              <button class="btn btn-primary rounded-pill px-4">
+                  <i class="fas fa-search"></i> بحث
+              </button>
+          </div>
+      </div>
+      <select id="entries" class="form-select w-auto">
+          <option>5</option>
+          <option>10</option>
+          <option>15</option>
+      </select>
+  </div>
+
+  <table class="customer table table-striped table-bordered">
+      <thead class="customer table-primary ">
+          <tr>
+              <th>الإجراء</th>
+              <th>#</th>
+              <th>صوره الاختبار</th>
+              <th>الاسم</th>
+              <th>وصف الاختبار</th>
+              <th>عدد الأسئلة</th>
+              <th>عرض</th>
+          </tr>
+      </thead>
+      <tbody>
+        @for(test of testName ;track test.id){
+
+          <tr>
+              <td class="customer d-flex justify-content-between gap-2">
+                  <button class="btn btn-primary btn-sm" (click)="EditTest(test.id)"><i class="fas fa-pencil-alt"></i></button>
+                  <button class="btn btn-danger btn-sm " (click)="DeleteTest(test.id)"><i class="fas fa-times"></i></button>
+              </td>
+              <td >{{test.id}}</td>
+              <td><img [src]="test.testImage+test.imageType" [alt]="test.name"></td>
+              <td>{{test.name}}</td>
+              <td>{{test.description}}</td>
+              <td>{{test.questionCount}}</td>
+              <td><a class="btn btn-success btn-sm" [routerLink]="['/question',test.id]" routerLinkActive="router-link-active" ><i class="fas fa-search"></i></a></td>
+          </tr>
+        }
+
+
+      </tbody>
+  </table>
+  </div>
+
+  @if(editMode){
+    <div class="customer shadow-sm update-form p-3 border rounded mt-3 mb-4 customer">
+      <div class="card p-4 shadow-sm customer">
+        <h2 class="mb-4 fw-bolder  text-center text-primary">تحديث بيانات الاختبار</h2>
+      
+        <div class="mb-3 customer">
+          <label class="form-label">📌 اسم الاختبار:</label>
+          <input type="text" class="form-control" [(ngModel)]="NameUpdate" placeholder="ادخل اسم الاختبار" />
+        </div>
+      <!-- عرض معاينة للصورة -->
+      <div  class="text-center mb-3 customer">
+        <img [src]="image" class="img-thumbnail" style="max-width: 200px;" />
+      </div>
+        <div class="mb-3">
+          <label class="form-label">🖼️ صورة الاختبار:</label>
+          <input type="file" class="form-control" (change)="changIamge($event)" />
+        </div>
+        
+      
+        
+        <div class="mb-3 customer">
+          <label for="testDescription" class="form-label">وصف الاختبار</label>
+          <textarea class="form-control" id="testDescription" rows="5" placeholder="إضافة وصف للاختبار" [(ngModel)]="DescriptionUpdate"></textarea>
+        </div>
+      
+        <div class="d-flex justify-content-center gap-3 mt-4 customer">
+          <button class="btn btn-success shadow" type="button" (click)="updateTest()" >💾 تحديث</button>
+          <button class="btn btn-outline-secondary shadow" type="button" (click)="cancelUpdate()">❌ إلغاء</button>
+        </div>
+      </div>
+      
+    </div>
+  }
+
+
+
+
+
+  <nav>
+      <ul class="pagination">
+          <li class="page-item disabled"><a class="page-link" >«</a></li>
+          <li class="page-item active"><a class="page-link" >1</a></li>
+          <li class="page-item"><a class="page-link" >2</a></li>
+          <li class="page-item"><a class="page-link" >3</a></li>
+          <li class="page-item"><a class="page-link" >4</a></li>
+          <li class="page-item"><a class="page-link" >5</a></li>
+          <li class="page-item"><a class="page-link" >»</a></li>
+      </ul>
+  </nav>
+</div>

@@ -1,0 +1,84 @@
+<section class="vh-100 d-flex align-items-center justify-content-center">
+  <div class="container">
+    <div class="row d-flex justify-content-center align-items-center">
+<!-- صورة تسجيل الدخول -->
+<div class="col-md-6 d-none d-md-block">
+<img src="/images/login.jpg"
+class="img-fluid" alt="صورة تسجيل الدخول">
+</div>
+
+
+     <form class="col-md-6 col-lg-5 p-4  bg-white" [formGroup]="login" (ngSubmit)="submitForm()">
+        <h2 class="text-center text-primary mb-4 fw-bold">تسجيل الدخول</h2>
+
+      <div class="form-group">
+          <input type="email" id="email" class="form-control" placeholder=" " formControlName="email">
+          <label for="email">البريد الإلكتروني</label>
+          <i class="fas fa-envelope input-icon"></i>
+
+          @if(login.get('email')?.errors&&login.get('email')?.touched){
+            <div
+              class="flex p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400"
+              role="alert"
+            >
+
+              <span class="sr-only">Danger</span>
+              <div>
+                
+                  @if(login.get('email')?.getError('required')){
+                  <div  class="alert alert-danger ms-4">الايميل مطلوب</div>
+                  } @else if (login.get('email')?.getError('email')) {
+                  <div  class="alert alert-danger ms-4">البريد الالكتروني بشكل غير صحيح</div>
+                  }
+              
+              </div>
+            </div>
+
+            }
+      </div>
+
+      <!-- كلمة المرور -->
+      <div class="form-group">
+          <input type="password" id="password" class="form-control" placeholder=" " formControlName="password">
+          <label for="password">كلمة المرور</label>
+          <i class="fas fa-lock input-icon"></i>
+
+
+
+
+            @if(login.get('password')?.errors&&login.get('password')?.touched){
+              <div
+                class="flex p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400"
+                role="alert"
+              >
+
+                <span class="sr-only">Danger</span>
+                <div>
+                  
+                    @if(login.get('password')?.getError('required')){
+                    <div class="alert alert-danger ms-4">كلمه المرور مطلوبه</div>
+                    }
+                  
+                </div>
+              </div>
+
+              }
+      </div>
+
+
+          <div>
+ 
+  </div>
+
+          <div class="text-center mt-4">
+              <button type="submit" class="btn btn-primary btn-lg px-4">تسجيل الدخول</button>
+          </div>
+        
+      </form>
+
+
+
+    </div>
+  </div>
+</section>
+

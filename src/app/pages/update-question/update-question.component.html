@@ -1,0 +1,32 @@
+<div class="container my-4">
+  <div class="customer card shadow-sm rounded p-4">
+      <h3 class="text-primary mb-3">تحديث السؤال</h3>
+
+      <form [formGroup]="UpdateQuestionFrom" (ngSubmit)="UpdateQuestion()">
+          <!-- حقل تعديل السؤال -->
+          <div class="mb-3">
+              <label for="updateQuestionText" class="form-label fw-bold">نص السؤال</label>
+              <input type="text" class="form-control" id="updateQuestionText" value="نص السؤال القديم" formControlName="content">
+          </div>
+
+          <!-- تعديل الإجابات -->
+          <div class="mb-3">
+              <label class="form-label fw-bold">الإجابات</label>
+              <div class="row">
+                <div class="row" formArrayName="choices">
+                    <div class="col-md-6 mb-2" *ngFor="let choice of choices.controls; let i = index">
+                      <input type="text" class="form-control" placeholder="إجابة {{ i + 1 }}" [formControlName]="i">
+                    </div>
+                </div>
+              </div>
+          </div>
+
+          <!-- زر الحفظ على اليمين -->
+          <div class="d-flex justify-content-end">
+              <button type="submit"  (click)=" SendUpdateQuestion()" class="btn btn-primary px-4">
+                  <i class="fas fa-save"></i> حفظ التعديلات
+              </button>
+          </div>
+      </form>
+  </div>
+</div>

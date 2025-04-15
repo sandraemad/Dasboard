@@ -1,0 +1,71 @@
+<div class="dashboard">
+    <div class="header">
+        <h1 class="text-primary">لوحة تحليل النتائج</h1>
+        <p>إحصائيات وتحليلات نتائج الاختبارات النفسية</p>
+    </div>
+
+    <div class="cards-container">
+        <div class="customer card">
+            <h2>إجمالي المستخدمين</h2>
+            <div class="value" id="total-users" style="color:#3498db">{{userCount}}</div>
+            <div class="description">عدد المستخدمين الذين دخلوا الصفحة</div>
+        </div>
+
+        <div class="customer card">
+            <h2>إجمالي الاختبارات</h2>
+            <div class="value" id="total-tests" style="color:#3498db">{{userTestCount}}</div>
+            <div class="description">عدد الاختبارات التي تم إجراؤها</div>
+        </div>
+
+        <div class="customer card">
+            <h2>اجمالي عدد المشتخدمين تم الاختبارات</h2>
+            <div class="value" id="most-common" style="color:#3498db">{{testCount}} </div>
+            <div class="description">جمالي عدد المشتخدمين تم الاختبارات</div>
+        </div>
+    </div>
+
+
+    <div class="customer chart-card" style="margin-top: 40px;">
+      <h2>نسبة استخدام الاختبارات</h2>
+      <div id="testsUsageChart" class="chart-container" style="height: 400px;"></div>
+    </div>
+
+    <div class="charts-row" style="margin-top: 40px; display: flex; gap: 20px; flex-wrap: wrap;">
+
+        @for(test of  testDistributions ;track $index){
+            <div class="customer chart-card" style="flex: 1; min-width: 300px;">
+                <h2>توزيع نتائج {{ test.testName }}</h2>
+                <div class="chart-container" [id]="'chart-' + $index" style="height: 400px;"></div>
+            </div>
+
+        }
+
+        
+          
+ 
+    </div>
+
+
+
+    <div class="customer table-card">
+        <h2>ملخص النتائج</h2>
+        <table class="customer data-table">
+            <thead>
+                <tr>
+                    <th>نوع الاختبار</th>
+                    <th>عدد المستخدمين</th>
+                </tr>
+            </thead>
+            <tbody>
+              @for(chart of chartData ;track $index){
+                <tr class="customer">
+                  <td>{{chart.testName}}</td>
+                  <td>{{chart.userTestCount}}</td>
+              </tr>
+              }
+                
+          
+            </tbody>
+        </table>
+    </div>
+</div>

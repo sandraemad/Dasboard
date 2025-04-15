@@ -1,0 +1,24 @@
+/* body{
+    text-align: right;
+    direction: rtl;
+    margin-top: 2%;
+    background-color: rgb(200, 219, 231);
+} */
+ 
+.editable:hover {
+    background-color: #f8f9fa;
+    cursor: pointer;
+}
+.error {
+    color: red;
+    font-size: 14px;
+    display: none;
+}
+.btn{
+    background-color: #007bff;
+    color:#fff;
+    float: left;
+}
+.btn:hover{
+    background-color: #0056b3;
+}

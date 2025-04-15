@@ -1,0 +1,54 @@
+/* You can add global styles to this file, and also import other style files */
+
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* الوضع العادي (Light Mode) */
+body.light-mode {
+  background-color:#fff;
+  color: #000000;
+}
+
+/* الوضع الداكن (Dark Mode) */
+body.dark-mode {
+  background-color: rgb(31 31 31); /* لون داكن مريح */
+  color: #fff; /* رمادي فاتح */
+}
+
+/* تعديل ألوان القائمة الجانبية */
+body.dark-mode .sidebar {
+  background-color: rgb(0, 91, 137);
+}
+
+body.light-mode .sidebar {
+  background-color: #3498db; /* الأزرق المستخدم عندك */
+}
+
+
+/* الكروت */
+body.dark-mode .icons {
+  color: #fff;
+}
+
+body.light-mode .icons{
+  
+  color: #000;
+}
+
+
+body.dark-mode .customer {
+  background-color: #303030 !important;
+  color: #ffffff !important;
+  .accordion-item{
+    background-color:#eee;
+  }
+  td{
+    background-color: #303030 !important;
+    color: #fff;
+  }
+ 
+}
+

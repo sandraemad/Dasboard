@@ -1,0 +1,65 @@
+<div class="container mt-4">
+  <div class="customer shadow-lg p-3 mb-5 bg-white rounded ">
+      <div class="d-flex justify-content-between align-items-center mb-3">
+          <!-- العنوان الرئيسي -->
+          <div class="section-title text-end">
+              <h2 class="fw-bolder">إدارة اختبار {{testName}}</h2>
+          </div>
+
+          <!-- زر إضافة سؤال -->
+
+    <a class="btn btn-success" [routerLink]="['/addQuestion',TestId]"  >
+              <i class="fas fa-plus"></i> أضف سؤال
+          </a>
+      </div>
+
+      @for(question of questions ; track $index) {
+        <div class="accordion w-100 shadow-sm rounded m-2">
+            <div class="accordion-item border-0">
+                <h2 class="accordion-header d-flex justify-content-between align-items-center px-3 py-2">
+                    <button class="text-primary text-start d-flex align-items-center w-100 border-0 shadow-none"
+                        type="button" data-bs-toggle="collapse"
+                        [attr.data-bs-target]="'#question' + question.questionId" aria-expanded="false"
+                        style="box-shadow: none !important; padding: 10px 12px; border-radius: 6px; font-size: 20px; background-color: transparent;">
+                        <span>{{$index}}. {{question.questioncontent}}</span>
+                    </button>
+
+                    <div class="d-flex gap-2">
+                        <button class="btn  btn-danger btn-sm" (click)="deleteQuection(question.questionId)"><i class="fas fa-trash"></i></button>
+                        <a class="btn btn-warning btn-sm" [routerLink]="['/updateQuestion',question.questionId]"><i class="fas fa-edit"></i></a>
+                        <button class="btn btn-light btn-sm border-0 shadow-none"
+                            type="button" data-bs-toggle="collapse"
+                            [attr.data-bs-target]="'#question' + question.questionId">
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                    </div>
+                </h2>
+                <div [id]="'question' + question.questionId" class="accordion-collapse collapse px-4">
+                    <div class="accordion-body">
+                        <div class="d-flex flex-row gap-5 text-secondary">
+                            <div>
+                                <input type="radio" [name]="'question' + question.questionId" [id]="'never' + question.questionId" class="mx-2">
+                                <label [for]="'never' + question.questionId">{{question.choices[0].choiceContent}}</label>
+                            </div>
+                            <div>
+                                <input type="radio" [name]="'question' + question.questionId" [id]="'rarely' + question.questionId" class="mx-2">
+                                <label [for]="'rarely' + question.questionId">{{question.choices[1].choiceContent}}</label>
+                            </div>
+                            <div>
+                                <input type="radio" [name]="'question' + question.questionId" [id]="'sometimes' + question.questionId" class="mx-2">
+                                <label [for]="'sometimes' + question.questionId">{{question.choices[2].choiceContent}}</label>
+                            </div>
+                            <div>
+                                <input type="radio" [name]="'question' + question.questionId" [id]="'often' + question.questionId" class="mx-2">
+                                <label [for]="'often' + question.questionId">{{question.choices[3].choiceContent}}</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+
+
+</div>
+</div>

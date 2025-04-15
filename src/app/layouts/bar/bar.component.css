@@ -1,0 +1,19 @@
+/* Navbar transition */
+.navbar {
+  transition: all 0.3s ease;
+  width: 100%;
+  z-index: 1000;
+}
+
+
+/* Input Focus */
+.form-control:focus {
+  box-shadow: 0 0 0 0.2rem rgba(0,123,255,.25);
+  border-color: #86b7fe;
+}
+
+/* Placeholder Style */
+.form-control::placeholder {
+  color: #aaa;
+  font-style: italic;
+}

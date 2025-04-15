@@ -1,0 +1,32 @@
+/* .container {
+  display: flex;
+  height: 100vh;
+}
+
+.sidebar {
+  position: fixed;
+  top: 0;
+  right: 0;
+  position: fixed;
+  height: 100%;
+ 
+  transition: 0.5s;
+  overflow: hidden;
+}
+
+.main-content {
+  margin-right: 250px;
+  margin-top: 100px;
+  flex-grow: 1;
+  padding: 20px;
+} */
+/* .main-content {
+  margin-right: 250px;
+  margin-top: 100px;
+  flex-grow: 1;
+  padding: 20px;
+} */
+.navbar-collapsed {
+  width: calc(100% - 250px);
+  margin-right: 250px;
+}

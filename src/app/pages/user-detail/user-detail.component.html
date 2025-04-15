@@ -1,0 +1,49 @@
+<div class="customer shadow-lg p-3 mb-5 rounded">
+
+        <div class="customer p-4">
+            <div class="d-flex align-items-center mb-3">
+
+              <img [src]="'data:image/jpeg;base64,' + userDetails.profilePicture" class="rounded-circle ms-3" [alt]="userDetails.name" width="80" height="80">
+                <div>
+                    <h4 class="mb-0" id="username">{{userDetails.name}}</h4>
+                    <p class=" text-white" id="email">{{userDetails.email}}</p>
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <h6 class="text-white">رقم الهاتف</h6>
+                    <div class="info-box" id="phone">{{userDetails.phone}}</div>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <h6 class="text-white">العمر</h6>
+                    <div class="info-box" id="gender">{{userDetails.gender}}</div>
+                </div>
+            </div>
+
+            <h5 class="mt-4">الاختبارات السابقة</h5>
+            <div class="table-responsive">
+                <table class="table table-bordered mt-3">
+                    <thead class="table-light">
+                        <tr>
+                            <th>اسم الاختبار</th>
+                            <th>النتيجة</th>
+                            <th>وقت الاختبار</th>
+                        </tr>
+                    </thead>
+                    <tbody id="test-results">
+                        @for(test of userDetails.tests ;track test.testId){
+
+                            <tr>
+
+                                <td>{{test.testName}}</td>
+                                <td>{{test.result}}</td>
+                                <td>{{test.dateTaken | date
+                                    }}</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>

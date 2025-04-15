@@ -1,0 +1,30 @@
+<div class="container my-4">
+  <div class="customer card shadow-sm rounded p-4">
+      <h3 class="text-primary mb-3">إضافة سؤال جديد</h3>
+     
+      <form  [formGroup]="AddQuestion" (ngSubmit)="submitAddQuestion()">
+          <!-- حقل السؤال -->
+          <div class="mb-3">
+              <label for="questionText" class="form-label fw-bold">نص السؤال</label>
+              <input type="text" class="form-control" id="questionText" placeholder="اكتب السؤال هنا"  formControlName="content">
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label fw-bold">الإجابات</label>
+            <div class="row" formArrayName="choices"> 
+              <div class="col-md-6 mb-2" *ngFor="let choice of choices.controls; let i = index">
+                <input type="text" class="form-control" placeholder="إجابة {{ i + 1 }}" [formControlName]="i">
+              </div>
+            </div>
+          </div>
+          
+
+          <!-- زر الإضافة على اليمين -->
+          <div class="d-flex justify-content-end">
+              <button type="submit" class="btn btn-success px-4">
+                  <i class="fas fa-plus"></i> إضافة
+              </button>
+          </div>
+      </form>
+  </div>
+</div>

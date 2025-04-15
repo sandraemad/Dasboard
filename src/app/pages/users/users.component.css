@@ -1,0 +1,41 @@
+
+section {
+  padding: 60px 0;
+  overflow: hidden;
+}
+
+.section-title {
+  text-align: center;
+  padding-bottom: 30px;
+}
+
+.section-title h2 {
+  font-size: 32px;
+  font-weight: bold;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+  position: relative;
+  color: #37517e;
+}
+
+
+/*********************************/
+.pagination .page-link {
+            border-radius: 50%; /* جعل الأزرار دائرية */
+            width: 40px !important;
+            height: 40px !important;
+            border-radius: 50% !important;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: none;
+            margin: 0 5px;
+            background-color: #007bff;
+            color: white;
+            transition: 0.3s;
+        }
+
+        .pagination .page-link:hover {
+            background-color: #0056b3;
+        }

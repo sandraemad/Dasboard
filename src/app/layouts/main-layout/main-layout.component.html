@@ -1,0 +1,37 @@
+<!-- <div class="container">
+  <nav class="sidebar">
+    <app-navbar></app-navbar>
+  </nav>
+  <app-custom></app-custom>
+
+
+</div> -->
+
+<!-- <app-custom></app-custom>
+
+
+<div class="d-flex justify-content-between align-items-center flex-column w-auto">
+  <router-outlet></router-outlet>
+</div> -->
+
+
+<div class="d-flex flex-column" style="min-height: 100vh;" [ngClass]="{'navbar-collapsed': close}">
+  <div>
+    <!-- محتوى السايد بار -->
+    <app-bar>
+      <button class="btn btn-outline-primary me-3" (click)="toggleSlider()">
+        <i class="fas fa-bars"></i>
+      </button>
+    </app-bar>
+  </div>
+
+  <div class="flex-grow-1 p-4">
+    <!-- المحتوى -->
+    <router-outlet></router-outlet>
+  </div>
+  <app-custom></app-custom>
+</div>
+
+<div *ngIf="close">
+  <app-navbar></app-navbar>
+</div>
