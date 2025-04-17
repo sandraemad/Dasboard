@@ -12,7 +12,8 @@
                             <div class="card-body text-center">
                                
                                     <img *ngIf="profileAdminData?.profilePicture"
-                                         [src]="'data:image/jpeg;base64,' + profileAdminData.profilePicture"
+                                    [src]="'data:image/' + profileAdminData.profilePictureType + ';base64,' + profileAdminData.profilePicture"
+
                                          [alt]="profileAdminData.name"
                                          class="rounded-circle"
                                          width="150">

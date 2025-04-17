@@ -16,18 +16,18 @@ import { AnalysisComponent } from './pages/analysis/analysis.component';
 export const routes: Routes = [
   {path:'',redirectTo:'login',pathMatch:'full'},
   {path:'',component:AuthLayoutComponent,children:[
-    {path:'login',component:LoginComponent,title:'Login'},
+    {path:'login',component:LoginComponent,title:'Login',canActivate:[loggedGuard]},
   ]},
 
   {path:'',component:MainLayoutComponent,children:[
-    {path:'users',loadComponent:()=>import('./pages/users/users.component').then((c)=>c.UsersComponent),title:'Users'},
-    {path:'test',loadComponent:()=>import('./pages/tests/tests.component').then((c)=>c.TestsComponent),title:'Test'},
-    {path:'updateQuestion/:id',loadComponent:()=>import('./pages/update-question/update-question.component').then((c)=>c.UpdateQuestionComponent),title:'Update Question'},
-    {path:'question/:id', loadComponent:()=>import('./pages/question/question.component').then((c)=>c.QuestionComponent),title:'Question'},
-    {path:'addQuestion/:id',loadComponent:()=>import('./pages/add-question/add-question.component').then((c)=>c.AddQuestionComponent),title:'Add Question'},
-    {path:'userDetail/:id',loadComponent:()=>import('./pages/user-detail/user-detail.component').then((c)=>c.UserDetailComponent),title:'User Details'},
-    {path:'profile',component:ProfileComponent,title:'Profile'},
-    {path:'setting',loadComponent:()=>import('./pages/setting/setting.component').then((c)=>c.SettingComponent),title:'Setting'} ,
-    {path:'analysis',component:AnalysisComponent}
+    {path:'users',loadComponent:()=>import('./pages/users/users.component').then((c)=>c.UsersComponent),title:'Users',canActivate:[authGuard]},
+    {path:'test',loadComponent:()=>import('./pages/tests/tests.component').then((c)=>c.TestsComponent),title:'Test',canActivate:[authGuard]},
+    {path:'updateQuestion/:id',loadComponent:()=>import('./pages/update-question/update-question.component').then((c)=>c.UpdateQuestionComponent),title:'Update Question',canActivate:[authGuard]},
+    {path:'question/:id', loadComponent:()=>import('./pages/question/question.component').then((c)=>c.QuestionComponent),title:'Question',canActivate:[authGuard]},
+    {path:'addQuestion/:id',loadComponent:()=>import('./pages/add-question/add-question.component').then((c)=>c.AddQuestionComponent),title:'Add Question',canActivate:[authGuard]},
+    {path:'userDetail/:id',loadComponent:()=>import('./pages/user-detail/user-detail.component').then((c)=>c.UserDetailComponent),title:'User Details',canActivate:[authGuard]},
+    {path:'profile',component:ProfileComponent,title:'Profile',canActivate:[authGuard]},
+    {path:'setting',loadComponent:()=>import('./pages/setting/setting.component').then((c)=>c.SettingComponent),title:'Setting',canActivate:[authGuard]}, 
+    {path:'analysis',component:AnalysisComponent,title:'لوحه التحكم',canActivate:[authGuard]}
   ]},
 ];

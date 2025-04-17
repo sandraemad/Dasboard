@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import e from 'express';
 import { SliderService } from '../../shared/interface/slider.service';
 import { NavbarComponent } from '../navbar/navbar.component';
@@ -13,7 +13,7 @@ import { IProfile } from '../../shared/interface/iprofile';
   templateUrl: './bar.component.html',
   styleUrl: './bar.component.css'
 })
-export class BarComponent {
+export class BarComponent implements OnInit{
   private readonly sliderService=inject(SliderService);
   private readonly accountService=inject(AccountService);
   darkMode:boolean=false;
@@ -35,9 +35,6 @@ profileAdminData!:IProfile;
     this.close=!this.close;
   }
   ngOnInit(): void {
-  
-
-
     this.accountService.getProfileAdmin().subscribe({
       next: (data) => {
         this.profileAdminData = data.data;

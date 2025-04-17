@@ -34,17 +34,17 @@
         </button>
   
         <!-- User Avatar -->
-         <a [routerLink]="['/profile']" >
-          <img *ngIf="profileAdminData?.profilePicture"
-          [src]="'data:image/jpeg;base64,' + profileAdminData.profilePicture"
-          [alt]="profileAdminData.name"
-          class="rounded-circle"
-          width="50"
-          height="50"
-          >
-   
-         </a>
-       
+        <a [routerLink]="['/profile']" *ngIf="profileAdminData">
+          <img
+            *ngIf="profileAdminData.profilePicture"
+            [src]="'data:image/' + profileAdminData.profilePictureType + ';base64,' + profileAdminData.profilePicture"
+            [alt]="profileAdminData.name"
+            class="rounded-circle"
+            width="50"
+            height="50"
+          />
+        </a>
+        
       </div>
   
     </div>

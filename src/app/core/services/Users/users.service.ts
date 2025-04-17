@@ -16,8 +16,8 @@ export class UsersService {
   // getUserById(id:string):Observable<any>{
   //   return this.httpClient.get(`https://personal-profiling-and-assistance-app.runasp.net/api/Admin/GetUserById/${id}`);
   // }
-  deleteUser():Observable<any>{
-    return this.httpClient.delete(`https://personal-profiling-and-assistance-app.runasp.net/api/Admin/DeleteUser`);
+  deleteUser(id:string):Observable<any>{
+    return this.httpClient.delete(`https://personal-profiling-and-assistance-app.runasp.net/api/Admin/DeleteUserById/${id}`);
   }
   userDetail(id:string):Observable<any>{
     return this.httpClient.get(`https://personal-profiling-and-assistance-app.runasp.net/api/Admin/GetUserDetails/${id}`);

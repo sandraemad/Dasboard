@@ -27,10 +27,7 @@ private readonly router=inject(Router);
   }
 
   getProfileAdmin():Observable<any>{
-    
-
     return this.httpClient.get(`https://personal-profiling-and-assistance-app.runasp.net/api/Admin/GetUserById/`);
-
   }
   updateProfileAdmin(data:object):Observable<any>{
     return this.httpClient.put(`https://personal-profiling-and-assistance-app.runasp.net/api/Admin/UpdateAdmin/`,data);

@@ -5,4 +5,5 @@ export interface IProfile {
     name: string;
     phone: string | null;
     profilePicture: string | null;
+    profilePictureType:string;
 }

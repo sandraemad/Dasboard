@@ -5,6 +5,7 @@ import { RouterLink } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import Swal from 'sweetalert2';
 
+
 @Component({
   selector: 'app-users',
   imports: [RouterLink],
@@ -33,7 +34,7 @@ export class UsersComponent implements OnInit {
   }
 
 
-  delete() {
+  delete(id: string) {
     Swal.fire({
       title: "هل أنت متأكد؟",
       text: "لن تتمكن من التراجع عن هذا الإجراء!",
@@ -44,36 +45,35 @@ export class UsersComponent implements OnInit {
       confirmButtonText: "نعم، احذفه!"
     }).then((result) => {
       if (result.isConfirmed) {
-        // بعد الموافقة، نقوم بحذف المستخدم
-        this.usersService.deleteUser().subscribe({
-          next: (response) => {
-            if (response.success) {
-              Swal.fire({
-                title: "تم الحذف!",
-                text: "تم حذف المستخدم بنجاح.",
-                icon: "success"
-              });
-
-              this.getAllUsers();
-
-            } else {
-              this.toastrService.error("لم يتم حذف المستخدم. يرجى المحاولة لاحقًا.", "خطأ!");
-            }
+        this.usersService.deleteUser(id).subscribe({
+          next: (res: any) => {
+            Swal.fire({
+              title: "تم الحذف!",
+              text: res.errorMessage || "تم حذف المستخدم بنجاح.",
+              icon: "success"
+            });
+            console.log(res);
+            this.getAllUsers();
           },
-          error: (error) => {
-            console.log(error);
-            this.toastrService.error("حدث خطأ أثناء حذف المستخدم.", "خطأ!");
+          error: (err) => {
+            Swal.fire({
+              title: "فشل الحذف!",
+              text: err.message || "حدث خطأ أثناء محاولة حذف المستخدم.",
+              icon: "error"
+            });
+            console.error(err);
           }
         });
       }
     });
-
   }
+
+
+
 
   ngOnInit(): void {
     this.getAllUsers();
   }
-
 
 
 }
